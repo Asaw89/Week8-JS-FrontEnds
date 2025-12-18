@@ -1,3 +1,5 @@
+const API_BASE_URL = 'http://localhost:8000';
+
 async function getAllMusicians() {
     const response = await fetch(`${API_BASE_URL}/musicians`);
     const data = await response.json();
@@ -12,12 +14,6 @@ async function getAllAlbums() {
 
 async function getMusicianbyID(id) {
     const response = await fetch(`${API_BASE_URL}/musicians/${id}`)
-    const data = await response.json();
-    return data.musician;
-}
-
-async function getAlbumsByMusicianID(id) {
-    const response = await fetch(`${API_BASE_URL}/albums/${id}`)
     const data = await response.json();
     return data.musician;
 }
@@ -67,7 +63,7 @@ async function updateAlbum(id, album) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(musician)
+        body: JSON.stringify(album)
     });
     return await response.json();
 }
