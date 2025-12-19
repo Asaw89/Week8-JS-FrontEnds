@@ -52,7 +52,6 @@ async function displayAlbums() {
 
 async function displayMusician(id) {
     const musician = await getMusicianByID(id);
-
     let html = `
             <div>
                 <h3>${musician.musician_name}</h3>
@@ -61,13 +60,11 @@ async function displayMusician(id) {
                 <p>Origin: ${musician.origin}</p>
             </div>
         `;
-
     document.getElementById('musician-list').innerHTML = html;
 }
 
 async function displayAlbum(id) {
     const album = await getAlbumByID(id);
-
     let html = `
             <div>
                 <h3>${album.title}</h3>
@@ -82,9 +79,9 @@ async function displayAlbum(id) {
 }
 
 async function showAlbumsForMusician(id) {
-    // Fetch only the albums belonging to this musician ID
     const albums = await getAlbumsByMusicianID(id);
     let html = `<h2>Artist Albums</h2>`;
+
     for (let album of albums) {
         html += `
             <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
@@ -95,8 +92,6 @@ async function showAlbumsForMusician(id) {
             </div>
         `;
     }
-
-    // Update the UI with the filtered albums
     document.getElementById('albums-list').innerHTML = html;
 }
 
