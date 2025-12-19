@@ -21,6 +21,9 @@ async function displayMusicians() { //creates the function to display musicians.
                 <p>Genre: ${musician.genre}</p>
                 <p>Year Formed: ${musician.year_formed}</p>
                 <p>Origin: ${musician.origin}</p>
+                <button onclick="showAlbumsForMusician(${musician.id})">
+                View Albums
+            </button>
             </div>
         `;
     }//creates HTML. the musician.musician_name gets replaced with the actual name
@@ -76,6 +79,25 @@ async function displayAlbum(id) {
         `;
 
     document.getElementById('album-list').innerHTML = html;
+}
+
+async function showAlbumsForMusician(id) {
+    // Fetch only the albums belonging to this musician ID
+    const albums = await getAlbumsByMusicianID(id);
+    let html = `<h2>Artist Albums</h2>`;
+    for (let album of albums) {
+        html += `
+            <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                <h3>${album.title}</h3>
+                <p>Tracks: ${album.number_of_tracks}</p>
+                <p>Label: ${album.label}</p>
+                <p><em>${album.description}</em></p>
+            </div>
+        `;
+    }
+
+    // Update the UI with the filtered albums
+    document.getElementById('albums-list').innerHTML = html;
 }
 
 displayMusicians();

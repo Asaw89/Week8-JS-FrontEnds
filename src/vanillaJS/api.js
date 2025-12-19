@@ -12,7 +12,7 @@ async function getAllAlbums() {
     return data.albums;
 }
 
-async function getMusicianbyID(id) {
+async function getMusicianByID(id) {
     const response = await fetch(`${API_BASE_URL}/musicians/${id}`)
     const data = await response.json();
     return data.musician;
