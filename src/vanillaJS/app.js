@@ -22,8 +22,9 @@ async function displayMusicians() { //creates the function to display musicians.
                 <p>Year Formed: ${musician.year_formed}</p>
                 <p>Origin: ${musician.origin}</p>
                 <button onclick="showAlbumsForMusician(${musician.id})">
-                View Albums
-            </button>
+                    View Albums
+                </button>
+                <div id="albums-container-${musician.id}"></div>
             </div>
         `;
     }//creates HTML. the musician.musician_name gets replaced with the actual name
@@ -92,7 +93,7 @@ async function showAlbumsForMusician(id) {
             </div>
         `;
     }
-    document.getElementById('albums-list').innerHTML = html;
+    document.getElementById(`albums-container-${id}`).innerHTML = html;
 }
 
 displayMusicians();

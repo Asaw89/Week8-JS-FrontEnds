@@ -18,6 +18,12 @@ async function getMusicianByID(id) {
     return data.musician;
 }
 
+async function getAlbumByID(id) {
+    const response = await fetch(`${API_BASE_URL}/albums/${id}`);
+    const data = await response.json();
+    return data.album;
+}
+
 async function getAlbumsByMusicianID(id) {
     const response = await fetch(`${API_BASE_URL}/musicians/${id}/albums`)
     const data = await response.json();
