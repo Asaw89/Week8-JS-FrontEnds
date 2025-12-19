@@ -29,7 +29,7 @@ async function displayMusicians() { //creates the function to display musicians.
 }
 
 async function displayAlbums() {
-    const albums = await getMusicianByID(id);
+    const albums = await getAllAlbums();
 
     let html = '';
     for (let album of albums) {
@@ -77,3 +77,5 @@ async function displayAlbum(id) {
 
     document.getElementById('album-list').innerHTML = html;
 }
+
+displayMusicians();
