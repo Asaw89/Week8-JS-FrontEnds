@@ -16,18 +16,21 @@ async function displayMusicians() { //creates the function to display musicians.
     let html = ''; //Creates an empty string variable. Build up HTML piece by piece in this this variable.
     for (let musician of musicians) { //Starts a loop. For each musician in the array, run the code inside the {}.
         html += `
-            <div>
-                <h3>${musician.musician_name}</h3>
-                <p>Genre: ${musician.genre}</p>
-                <p>Year Formed: ${musician.year_formed}</p>
-                <p>Origin: ${musician.origin}</p>
-                <button onclick="showAlbumsForMusician(${musician.id})">
-                    View Albums
-                </button>
-                <div id="albums-container-${musician.id}"></div>
-            </div>
-        `;
+            <div class="col-md mb-3">
+        <div class="card-body">
+            <h3 class="card-title">${musician.musician_name}</h3>
+            <p class="card-text">Genre: ${musician.genre}</p>
+            <p class="card-text">Year Formed: ${musician.year_formed}</p>
+            <p class="card-text">Origin: ${musician.origin}</p>
+            <button class="btn btn-primary" onclick="showAlbumsForMusician(${musician.id})">
+                View Albums
+            </button>
+            <div id="albums-container-${musician.id}"></div>
+        </div>
+    </div>
+`;
     }//creates HTML. the musician.musician_name gets replaced with the actual name
+    html+=`</div>`;
 
     document.getElementById('musicians-list').innerHTML = html;// document is the webpage and the musician find the musician in your html. inner html replaces the sting
 }
@@ -94,6 +97,18 @@ async function showAlbumsForMusician(id) {
         `;
     }
     document.getElementById(`albums-container-${id}`).innerHTML = html;
+}
+
+function showMusicians() {
+    document.getElementById('musicians-section').style.display = 'block';
+    document.getElementById('albums-section').style.display = 'none';
+    displayMusicians();
+}
+
+function showAlbums() {
+    document.getElementById('musicians-section').style.display = 'none';
+    document.getElementById('albums-section').style.display = 'block';
+    displayAlbums();
 }
 
 displayMusicians();
