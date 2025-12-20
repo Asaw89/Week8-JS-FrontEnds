@@ -16,7 +16,19 @@
 
       <div class="container my-4">
         <h2>Musicians</h2>
-        <p>{{ message }}</p>
+        <p>Found {{ musicians.length }} musicians</p>
+        <div class="row">
+          <div class="col-md-4 mb-3" v-for="musician in musicians">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">{{ musician.musician_name }}</h3>
+                <p class="card-text">Genre: {{ musician.genre }}</p>
+                <p class="card-text">Year Formed: {{ musician.year_formed }}</p>
+                <p class="card-text">Origin: {{ musician.origin }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

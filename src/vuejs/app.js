@@ -1,8 +1,11 @@
 const app = Vue.createApp({
     data() {
         return {
-            message: 'Hello from Vue!'
+            musicians: []
         }
+    },
+    async mounted() {
+        this.musicians = await getAllMusicians();
     }
 });
 
